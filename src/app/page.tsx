@@ -1,12 +1,18 @@
-import { memo } from "react";
-import { NewHero } from "../components/views/NewHero";
+import PrettyText from "@/components/common/PrettyText";
+import { memo, Suspense } from "react";
 import Feed from "./views/Feed";
+import { NewHero } from "./views/NewHero";
 import { BlogPromo } from "./views/Sections/BlogPromo";
 import { Special } from "./views/Sections/Special";
 
 const HomeComponent = () => {
   return (<>
-    <NewHero />
+    <Suspense fallback={
+      <div>
+        <PrettyText>Loading</PrettyText>
+      </div>}>
+        <NewHero />
+    </Suspense>
     <BlogPromo />
     <Special />
     <Feed />

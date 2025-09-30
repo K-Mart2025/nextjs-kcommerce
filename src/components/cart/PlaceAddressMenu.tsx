@@ -1,8 +1,10 @@
+"use client"
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import ConfigContext from "@/contexts/ConfigContext";
 import { useCart } from "@/hooks/useCart";
+import { useConfig } from "@/hooks/useConfig";
 import { useOrderFormatter, useWhatsAppLinkGenerator } from "@/lib/orders";
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import PrettyText from "../common/PrettyText";
 import { Button } from "../ui/button";
 import { Address } from "./Address";
@@ -11,10 +13,11 @@ export const PlaceAddressMenu = () => {
   const [method, setMethod] = useState<string>("direccion"); // Método seleccionado
   const [address, setAddress] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
+  const config = useConfig();
+
+  if (!config) return null;
 
   const { cart } = useCart();
-
-  const { config } = useContext(ConfigContext);
 
   const { formatOrder } = useOrderFormatter();
   const { generateLink } = useWhatsAppLinkGenerator();

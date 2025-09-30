@@ -1,19 +1,10 @@
 "use client"
 
-import ConfigContext from "@/contexts/ConfigContext";
+import { fetchConfig } from "@/services/config";
 import Link from "next/link";
-import { memo, useContext, useEffect, useState } from "react";
-const FooterComponent = function Footer() {
-  const [isClient, setIsClient] = useState(false)
-
-  const { config } = useContext(ConfigContext);
-
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
-
-  if (!isClient) return null; // or loading placeholder
-
+import { memo } from "react";
+const FooterComponent = async function Footer() {
+  const config = await fetchConfig()
   return (
     <footer className="py-8 text-white bg-gray-800">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">

@@ -1,17 +1,7 @@
-"use client"
+import { fetchConfig } from "@/services/config";
 
-import ConfigContext from "@/contexts/ConfigContext";
-import { useContext, useEffect, useState } from "react";
-
-export const BlogPromo = () => {
-  const { config } = useContext(ConfigContext);
-  const [isClient, setIsClient] = useState(false)
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
-
-  if (!isClient) { return null }
-
+export const BlogPromo = async () => {
+  const config = await fetchConfig()
   return (
     <section className="flex items-center mx-2 my-8">
       <div className="flex flex-col md:flex-row items-center justify-between gap-10 ring-4 ring-blue-400 rounded-xl max-w-7xl mx-auto bg-gradient-to-r from-blue-50 via-white to-blue-50 shadow-lg p-8">

@@ -1,6 +1,6 @@
 "use client"
-import LogoCarousel from "@/components/views/LogoCarousel.jsx";
-import { hero_images } from "@/data/images.js";
+import LogoCarousel from "@/components/common/LogoCarousel";
+import { hero_images } from "@/data/images";
 import dynamic from "next/dynamic";
 
 import { useEffect, useState } from "react";

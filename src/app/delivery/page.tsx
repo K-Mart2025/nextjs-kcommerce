@@ -1,12 +1,9 @@
-"use client"
-
-import ConfigContext from "@/contexts/ConfigContext";
+import { fetchConfig } from "@/services/config";
 import { Calendar, Clock, MapPin, Truck } from "lucide-react";
 import Link from "next/link";
-import { useContext } from "react";
 
-export default function Delivery() {
-  const { config } = useContext(ConfigContext);
+export default async function Delivery() {
+  const config = await fetchConfig()
   return (
     <div className="min-h-screen bg-white">
       <div className="max-w-4xl px-4 py-12 mx-auto">

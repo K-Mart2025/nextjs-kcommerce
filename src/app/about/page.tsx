@@ -1,5 +1,3 @@
-"use client"
-
 import { Heart, MapPin, Music, ShoppingBag } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";

@@ -1,28 +1,28 @@
-"use client"
-
-import ConfigContext from "@/contexts/ConfigContext";
 import { options } from "@/data/suggest";
 import { useToggle } from "@/hooks/useActive";
-import { Menu, Navigation, Search } from "lucide-react";
+import { ConfigResponse } from "@/types/config";
+import { Menu, Search, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   ChangeEvent,
   memo,
-  useContext,
   useEffect,
   useRef,
-  useState,
+  useState
 } from "react";
 import { CartList } from "../cart/CartList";
-import { NavBar } from "../common/NavBar";
+import { NavBar } from "./NavBar";
+import Navigation from "./Navigation";
 
 const HeaderComponent =
   ({
+    config,
     onSearchChange,
     searchValue,
   }: {
+    config: ConfigResponse,
     onSearchChange: (value: string) => void;
     searchValue: string;
   }) => {
@@ -61,9 +61,6 @@ const HeaderComponent =
         document.removeEventListener("mousedown", handleClickOutside);
       };
     }, [active, setActive, isSearchOpen, setIsSearchOpen]);
-
-    // Consume orderNumber from ConfigContext
-    const { config } = useContext(ConfigContext);
 
     const [scrolled, setScrolled] = useState(false);
 
@@ -133,7 +130,29 @@ const HeaderComponent =
                 }}
                 className="md:hidden"
               >
-                <Search className="rounded-md w-7 h-7 hover:shadow-lg" />
+                <div className="relative">
+                  <Search className="rounded-md w-7 h-7 hover:shadow-lg" />
+
+                  {searchValue.length > 0 && (
+                    <div
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onSearchChange("");
+                      }}
+                      className="absolute -right-2 -top-2 cursor-pointer bg-white/50 rounded-full p-0.5 hover:bg-gray-200"
+                      style={{ width: "20px", height: "20px" }}
+                      aria-label="Clear filter"
+                      role="button"
+                      tabIndex={0}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") onSearchChange("");
+                      }}
+                    >
+                      <X size={16} />
+                    </div>
+                  )}
+                </div>
+
 
                 {/* Modal de búsqueda para móviles */}
                 {isSearchOpen && (
@@ -168,6 +187,7 @@ const HeaderComponent =
                     </div>
                   </div>
                 )}
+
               </div>
             </div>
             <div className="rounded-md w-7 h-7 hover:shadow-lg">
@@ -267,5 +287,5 @@ const HeaderComponent =
     );
   }
 
-export const Header = memo(HeaderComponent);
-export default Header;
+export const HeaderClientComponent = memo(HeaderComponent);
+export default HeaderClientComponent;

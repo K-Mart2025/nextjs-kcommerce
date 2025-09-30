@@ -1,12 +1,8 @@
-"use client"
-
-import ConfigContext from "@/contexts/ConfigContext";
-import { useContext } from "react";
+import { fetchConfig } from "@/services/config";
 import { DropdownMenu } from "./DropDown";
 
-export const NavBar = () => {
-  const { config } = useContext(ConfigContext);
-
+export const NavBar = async () => {
+  const config = await fetchConfig()
   return (
     <>
       <DropdownMenu
