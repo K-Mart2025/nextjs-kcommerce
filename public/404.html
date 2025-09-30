@@ -1,0 +1,169 @@
+<html>
+      <head>
+        <title>404 - Página no encontrada | K-Shop Admin</title>
+        <style>
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+          user-select: none;
+          }
+          
+          body {
+            background-color: #eef5ff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
+          }
+          
+          .container {
+            max-width: 600px;
+            background-color: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0, 150, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+          }
+          
+          .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(to right, #7dd3fc, #38bdf8);
+          }
+          
+          h1 {
+            font-size: 72px;
+            font-weight: 800;
+            color: #38bdf8; 
+            margin-bottom: 10px;
+            line-height: 1;
+          }
+          
+          h2 {
+            font-size: 28px;
+            font-weight: 600;
+            color: #334155; 
+            margin-bottom: 20px;
+          }
+          
+          p {
+            color: #64748b; 
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+          }
+          
+          .error-icon {
+            font-size: 120px;
+            margin-bottom: 20px;
+            color: #7dd3fc; 
+          }
+          
+          .button {
+            display: inline-block;
+            background-color: #38bdf8; 
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+          }
+          
+          .button:hover {
+            background-color: #0ea5e9; 
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+          }
+          
+          .button:active {
+            transform: translateY(0);
+          }
+          
+          .links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+          }
+          
+          .link {
+            color: #38bdf8; 
+            text-decoration: none;
+            font-size: 14px;
+          }
+          
+          .link:hover {
+            text-decoration: underline;
+          }
+          
+          @media (max-width: 640px) {
+            .container {
+              padding: 30px 20px;
+            }
+            
+            h1 {
+              font-size: 60px;
+            }
+            
+            h2 {
+              font-size: 24px;
+            }
+            
+            .error-icon {
+              font-size: 100px;
+            }
+          }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="error-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="120"
+              height="120"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M16 16s-1.5-2-4-2-4 2-4 2"></path>
+              <line x1="9" y1="9" x2="9.01" y2="9"></line>
+              <line x1="15" y1="9" x2="15.01" y2="9"></line>
+            </svg>
+          </div>
+          <h1>404</h1>
+          <h2>Página no encontrada</h2>
+          <p>
+            Lo sentimos, la página que estás buscando no existe o ha sido movida. Por favor, verifica la URL o regresa a
+            la página de inicio.
+          </p>
+          <Link href="/" class="button">
+            Volver al Inicio
+          </a>
+          <br>
+          <div class="links">
+            <a href="mailto:info@kmarthabana.run.place" class="link">
+              Contactar Soporte
+            </a>
+          </div>
+        </div>
+      </body>
+    </html>

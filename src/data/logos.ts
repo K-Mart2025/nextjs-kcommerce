@@ -1,0 +1,15 @@
+export const logos: string[] = [
+    "/assets/carousel/nongshim.svg",
+    "/assets/carousel/buldak.svg",
+    "/assets/carousel/jinro.webp",
+    "/assets/carousel/Binggrae_logo.svg",
+    "/assets/carousel/dongsuh-bw.png",
+    "/assets/carousel/haitai.svg",
+    "/assets/carousel/LOTTE-Logo.svg",
+    "/assets/carousel/okf.webp",
+    "/assets/carousel/Ottogi-Logo.webp",
+    "/assets/carousel/paldo.svg",
+    "/assets/carousel/Samyang-Logo.svg",
+    "/assets/carousel/sempio.svg",
+    "/assets/carousel/makku.avif",
+];
