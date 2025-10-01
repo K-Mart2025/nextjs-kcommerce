@@ -1,8 +1,8 @@
-import { fetchConfig } from "@/services/config";
+import { useConfig } from "@/hooks/useConfig";
 import { DropdownMenu } from "./DropDown";
 
-export const NavBar = async () => {
-  const config = await fetchConfig()
+export const NavBar = () => {
+  const config = useConfig()
   return (
     <>
       <DropdownMenu

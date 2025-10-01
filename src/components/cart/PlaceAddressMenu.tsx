@@ -12,30 +12,14 @@ import { Address } from "./Address";
 export const PlaceAddressMenu = () => {
   const [method, setMethod] = useState<string>("direccion"); // Método seleccionado
   const [address, setAddress] = useState<string>("");
+  const [isClient, setIsClient] = useState(false)
   const [error, setError] = useState<string | null>(null);
   const config = useConfig();
-
-  if (!config) return null;
 
   const { cart } = useCart();
 
   const { formatOrder } = useOrderFormatter();
   const { generateLink } = useWhatsAppLinkGenerator();
-
-  const handleSubmit = () => {
-    if (method === "null") {
-      setError("Por favor, selecciona un método para proveer tu ubicación.");
-      return;
-    }
-
-    if (!address) {
-      setError("Por favor, completa el campo requerido.");
-      return;
-    }
-
-    setError(null);
-    buyProduct();
-  };
 
   const whatsappLink = useMemo(() => {
     if (!config || !config.orderPhone) return "";
@@ -55,14 +39,36 @@ export const PlaceAddressMenu = () => {
     }
   }, [cart, formatOrder, generateLink, config, address, method]);
 
+  useEffect(() => {
+    setAddress(""); // Limpia el campo de dirección
+  }, [method]);
+
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  if (!config || !isClient) return null;
+
+  const handleSubmit = () => {
+    if (method === "null") {
+      setError("Por favor, selecciona un método para proveer tu ubicación.");
+      return;
+    }
+
+    if (!address) {
+      setError("Por favor, completa el campo requerido.");
+      return;
+    }
+
+    setError(null);
+    buyProduct();
+  };
+
   const buyProduct = () => {
     if (!config || !config.orderPhone) return;
     window.open(whatsappLink, "_blank");
   };
-
-  useEffect(() => {
-    setAddress(""); // Limpia el campo de dirección
-  }, [method]);
 
   return (
     <>

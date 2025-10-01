@@ -1,10 +1,10 @@
 "use client"
 
-import { fetchConfig } from "@/services/config";
+import { useConfig } from "@/hooks/useConfig";
 import Link from "next/link";
 import { memo } from "react";
-const FooterComponent = async function Footer() {
-  const config = await fetchConfig()
+const FooterComponent = function Footer() {
+  const config = useConfig()
   return (
     <footer className="py-8 text-white bg-gray-800">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">

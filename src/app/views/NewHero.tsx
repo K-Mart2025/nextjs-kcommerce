@@ -21,7 +21,6 @@ export const NewHero = () => {
     return null
   }
 
-
   return (
     <div className="w-full bg-blue-50 relative mb-20" >
       <div className="bg-blue-50 relative h-[90vh] flex flex-col justify-around w-full mx-auto sm:max-w-7xl">
@@ -50,9 +49,9 @@ export const NewHero = () => {
             </a>
           </div>
           <div className="sm:h-auto">
-            <div className="marquee-blur sm:rounded-3xl ">
+            <div className="marquee-blur blur-sm sm:rounded-3xl ">
               <ThreeDMarquee
-                className="z-0 sm:rounded-3xl "
+                className="z-0 sm:rounded-3xl"
                 images={hero_images}
               />
             </div>

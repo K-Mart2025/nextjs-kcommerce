@@ -32,70 +32,68 @@ export const CartList = () => {
         <DialogHeader>
           <DialogTitle>Carrito</DialogTitle>
         </DialogHeader>
-        <DialogDescription>
-          {cart.length === 0 ? (
-            <Table className="w-full">
-              <TableBody>
-                <TableRow>
-                  <TableCell colSpan={3} className="text-center">
-                    <PrettyText> Tu carrito está vacío </PrettyText>
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          ) : (
-            <div className="space-y-4">
-              {cart.map((item) => (
-                <CartItem
-                  key={item.product.id}
-                  item={item}
-                  onQuantityChange={(quantity) =>
-                    updateQuantity({
-                      productId: item.product.id,
-                      quantity,
-                    })
-                  }
-                  onRemove={() => removeFromCart(item.product.id)}
-                />
-              ))}
+        {cart.length === 0 ? (
+          <Table className="w-full">
+            <TableBody>
+              <TableRow>
+                <TableCell colSpan={3} className="text-center">
+                  <PrettyText> Tu carrito está vacío </PrettyText>
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        ) : (
+          <div className="space-y-4">
+            {cart.map((item) => (
+              <CartItem
+                key={item.product.id}
+                item={item}
+                onQuantityChange={(quantity) =>
+                  updateQuantity({
+                    productId: item.product.id,
+                    quantity,
+                  })
+                }
+                onRemove={() => removeFromCart(item.product.id)}
+              />
+            ))}
 
-              <div className="flex flex-col items-center justify-between gap-4 pt-4 border-t min-w-fit md:flex-row">
-                {/* Total y cantidad de productos */}
-                <div className="flex flex-col items-center md:items-start">
-                  <h3 className="text-xl font-bold">Total: ${cartTotal}</h3>
-                  <h2 className="text-gray-600">Productos: {cartCount}</h2>
-                </div>
+            <div className="flex flex-col items-center justify-between gap-4 pt-4 border-t min-w-fit md:flex-row">
+              {/* Total y cantidad de productos */}
+              <div className="flex flex-col items-center md:items-start">
+                <h3 className="text-xl font-bold">Total: ${cartTotal}</h3>
+                <h2 className="text-gray-600">Productos: {cartCount}</h2>
+              </div>
 
-                {/* Botones de acción */}
-                <div className="flex flex-col items-center gap-2 md:flex-row">
-                  <Button
-                    variant="outline"
-                    onClick={() => clearCart()}
-                    className="w-full md:w-auto"
-                  >
-                    Vaciar Carrito
-                  </Button>
-                  <Dialog>
-                    <DialogTrigger>
-                      <Button className="w-full bg-blue-600 md:w-auto hover:bg-blue-700">
-                        Proceder al Pago
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent className="min-w-min h-full max-h-[80vh] bg-white overflow-y-auto">
-                      <DialogHeader>
-                        <DialogTitle>Dirección</DialogTitle>
-                        <DialogDescription>
-                          Datos de ubicación
-                        </DialogDescription>
-                        <PlaceAddressMenu />
-                      </DialogHeader>
-                    </DialogContent>
-                  </Dialog>
-                </div>
+              {/* Botones de acción */}
+              <div className="flex flex-col items-center gap-2 md:flex-row">
+                <Button
+                  variant="outline"
+                  onClick={() => clearCart()}
+                  className="w-full md:w-auto"
+                >
+                  Vaciar Carrito
+                </Button>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button className="w-full bg-blue-600 md:w-auto hover:bg-blue-700">
+                      Proceder al Pago
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="min-w-min h-full max-h-[80vh] bg-white overflow-y-auto">
+                    <DialogHeader>
+                      <DialogTitle>Dirección</DialogTitle>
+                      <DialogDescription>
+                        Datos de ubicación
+                      </DialogDescription>
+                      <PlaceAddressMenu />
+                    </DialogHeader>
+                  </DialogContent>
+                </Dialog>
               </div>
             </div>
-          )}
-        </DialogDescription>
+          </div>
+        )}
       </DialogContent>
     </Dialog>
   );
