@@ -56,14 +56,14 @@ export default async function Returns() {
               <p className="mb-4 text-gray-700">
                 Para ayudarte, solo haz clic en el botón de WhatsApp.
               </p>
-              <Link
+              {config && <Link
                 href={"https://wa.me/+53" + config?.supportPhone}
                 target="_blank"
                 className="inline-flex items-center justify-center px-6 py-3 font-medium text-white transition-colors duration-200 bg-green-500 rounded-lg hover:bg-green-600"
               >
                 <MessageCircle className="w-5 h-5 mr-2" />
                 Contactar por WhatsApp
-              </Link>
+              </Link>}
             </div>
           </div>
 

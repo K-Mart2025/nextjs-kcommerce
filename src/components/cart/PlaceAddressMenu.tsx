@@ -70,6 +70,9 @@ export const PlaceAddressMenu = () => {
     window.open(whatsappLink, "_blank");
   };
 
+  if (!config) {
+    return <PrettyText>Cargando...</PrettyText>
+  }
   return (
     <>
       <Tabs defaultValue="null" className="w-full">

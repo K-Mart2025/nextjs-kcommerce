@@ -235,12 +235,13 @@ const HeaderComponent =
                   <Link href="/returns" className="hover:text-blue-600">
                     Cambios y Devoluciones
                   </Link>
-                  <Link
-                    href={"https://wa.me/+53" + config?.supportPhone}
-                    className="hover:text-blue-600"
-                  >
-                    Contáctanos
-                  </Link>
+                  {config &&
+                    <Link
+                      href={"https://wa.me/+53" + config?.supportPhone}
+                      className="hover:text-blue-600"
+                    >
+                      Contáctanos
+                    </Link>}
 
                   <Link
                     href="https://www.instagram.com/k_marthavana"

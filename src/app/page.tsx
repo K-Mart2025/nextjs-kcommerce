@@ -8,10 +8,9 @@ import { Special } from "./views/Sections/Special";
 const HomeComponent = () => {
   return (<>
     <Suspense fallback={
-      <div>
-        <PrettyText>Loading</PrettyText>
-      </div>}>
-        <NewHero />
+      <PrettyText>Loading</PrettyText>
+    }>
+      <NewHero />
     </Suspense>
     <BlogPromo />
     <Special />

@@ -1,24 +1,26 @@
 import { fetchConfig } from "@/services/config";
-import { ConfigResponse } from "@/types/config";
+import { Config } from "@/types/config";
 import { useEffect, useState } from "react";
 
-export const useConfig = (): ConfigResponse | null => {
-  const [config, setConfig] = useState<ConfigResponse | null>(null);
-
+export const useConfig = (): Config | null => {
+  const [config, setConfig] = useState<Config | null>(null);
   useEffect(() => {
-    let isMounted = true; // to avoid setting state on unmounted component
+    let isMounted = true;
 
-    fetchConfig()
-      .then((data) => {
-        if (isMounted) setConfig(data);
-      })
-      .catch((error) => {
-        console.error("Failed to fetch config:", error);
-      });
+    async function loadConfig() {
+      try {
+        const data = await fetchConfig();
+        if (isMounted) setConfig(data.config);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    loadConfig();
 
     return () => {
       isMounted = false;
-    };
+    }
   }, []);
 
   return config;

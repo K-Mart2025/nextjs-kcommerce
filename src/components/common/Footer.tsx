@@ -12,6 +12,7 @@ const FooterComponent = function Footer() {
           <div>
             <h3 className="mb-4 text-lg font-semibold">Atención al cliente</h3>
             <ul className="space-y-2">
+              {config &&
               <li>
                 <a
                   href={"https://wa.me/+53" + config?.supportPhone}
@@ -19,7 +20,7 @@ const FooterComponent = function Footer() {
                 >
                   Contáctanos
                 </a>
-              </li>
+              </li>}
               <li>
                 <Link href="/delivery" className="hover:text-gray-300">
                   Información de Envío

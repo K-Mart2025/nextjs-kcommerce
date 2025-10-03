@@ -23,7 +23,9 @@ export const NavBar = () => {
           { label: "Cambios y Devoluciones", href: "/returns" },
           {
             label: "Contáctanos",
-            href: "https://wa.me/+53" + config?.supportPhone,
+            href: config?.supportPhone
+              ? `https://wa.me/+53${config.supportPhone}`
+              : "#",
           },
         ]}
       />
