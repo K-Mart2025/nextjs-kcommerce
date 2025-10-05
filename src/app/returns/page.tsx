@@ -57,7 +57,7 @@ export default async function Returns() {
                 Para ayudarte, solo haz clic en el botón de WhatsApp.
               </p>
               {config && <Link
-                href={"https://wa.me/+53" + config?.supportPhone}
+                href={"https://wa.me/+53" + config?.config.supportPhone}
                 target="_blank"
                 className="inline-flex items-center justify-center px-6 py-3 font-medium text-white transition-colors duration-200 bg-green-500 rounded-lg hover:bg-green-600"
               >

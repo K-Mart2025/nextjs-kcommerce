@@ -18,7 +18,7 @@ export const BlogPromo = async () => {
         {/* Imagen y botón */}
         <div className="relative bg-white rounded-3xl p-8 shadow-2xl w-full h-96 md:w-3/5 lg:w-2/3">
           <a
-            href={config?.blogurl ?? "#"}
+            href={config?.config.blogUrl ?? "#"}
             className="absolute bottom-5 right-5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 text-white font-bold py-4 px-10 rounded-xl transition-transform transform hover:scale-105"
             aria-label="Añadir productos al carrito"
           >

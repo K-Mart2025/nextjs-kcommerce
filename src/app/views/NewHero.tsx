@@ -44,7 +44,7 @@ export const NewHero = () => {
             <p className="mb-6 text-gray-700">
               Desde kimchi picante hasta dulces coreanos, encuéntralo todo aquí
             </p>
-            <a href="#products" className="px-6 py-3 bg-blue-600 max-w-64 text-white rounded-lg hover:bg-blue-700 transition">
+            <a href="#products" className="hover:scale-105 px-6 py-3 bg-blue-600 max-w-64 text-white rounded-lg hover:bg-blue-700 transition">
               Compra ahora
             </a>
           </div>

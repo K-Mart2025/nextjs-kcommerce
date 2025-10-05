@@ -7,7 +7,8 @@ interface Config {
   orderPhone?: string;
   supportPhone?: string;
   supportEmail?: string;
-  blogurl?: string;
+  blogUrl?: string;
+  commerceUrl?: string;
 }
 
 export type { Config, ConfigResponse };

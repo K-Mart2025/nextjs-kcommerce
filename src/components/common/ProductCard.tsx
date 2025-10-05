@@ -42,7 +42,7 @@ const Card = ({
     <div
       data-product-card
       data-product-id={singleProduct.id}
-      className="relative overflow-hidden transition duration-300 bg-white rounded-lg shadow-md hover:shadow-lg cardAnimation">
+      className="relative hover:scale-105 overflow-hidden transition duration-300 bg-white rounded-lg shadow-md hover:shadow-lg cardAnimation">
       <Link
         href={`/product/${singleProduct.id}`}
         className="block"
