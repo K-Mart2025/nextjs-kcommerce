@@ -17,6 +17,7 @@ interface Product {
   description: string;
   ingredients: string;
   badge?: string;
+  weight: number
 }
 
 export type { defaultProductProps, Product };

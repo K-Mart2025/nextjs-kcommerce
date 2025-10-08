@@ -1,5 +1,6 @@
 interface CartItem {
   product: {
+    weight: any;
     name: string;
     price: number;
   };
@@ -15,17 +16,15 @@ interface FormatOrderResult {
   total: number;
 }
 
-// Función para calcular el subtotal de un producto
-const calculateItemTotal = (price: number, quantity: number): number => {
-  return price * quantity;
-};
-
 // Función para formatear un solo producto en el mensaje
 const formatCartItem = (item: CartItem, index: number): string => {
-  const itemTotal = calculateItemTotal(item.product.price, item.quantity);
+  const itemTotal = item.product.price * item.quantity;
+  const itemTotalWeight = item.product.weight * item.quantity;
   return `➡️ *${index + 1}. ${item.product.name}*  
   - Cantidad: ${item.quantity}  
-  - Precio unitario: $${item.product.price.toFixed(2)}  
+  - Precio unitario: $${item.product.price.toFixed(2)} 
+  - Peso unitario: ${item.product.weight}
+  - Peso: ${itemTotalWeight}
   - Subtotal: $${itemTotal.toFixed(2)}\n\n`;
 };
 
@@ -40,7 +39,7 @@ export const useOrderFormatter = () => {
     let message = "";
 
     cart.forEach((item, index) => {
-      const itemTotal = calculateItemTotal(item.product.price, item.quantity);
+      const itemTotal = item.product.price * item.quantity;
       total += itemTotal;
       message += formatCartItem(item, index);
     });
