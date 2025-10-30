@@ -2,7 +2,7 @@ import { apiUrl } from "@/data/config";
 
 export async function trackVisit(page: string, deviceType: string) {
   try {
-    await fetch(`${apiUrl}/api/client/visits`, {
+    await fetch(`${apiUrl}/visits`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

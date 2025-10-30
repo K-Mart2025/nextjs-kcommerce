@@ -1,6 +1,6 @@
+import { apiUrl } from "@/data/config";
 import { QueryFunction } from "@tanstack/react-query";
 import { ApiResponse, ProductFilters, QueryResult } from "../types/query";
-import { apiUrl } from "@/data/config";
 
 export const getProductsFiltered: QueryFunction<
   QueryResult,
@@ -19,7 +19,7 @@ export const getProductsFiltered: QueryFunction<
     ...(filters.sortBy && { sortBy: filters.sortBy }),
     ...(filters.sortDirection && { sortDirection: filters.sortDirection }),
   });
-  const url = `${apiUrl}/api/client/?${params.toString()}`
+  const url = `${apiUrl}/products/client/?${params.toString()}`
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error("Error en la petición");

@@ -9,7 +9,7 @@ export const getProducts: QueryFunction<
 > = async ({ pageParam, queryKey }) => {
   const [, category] = queryKey;
   const response = await fetch(
-    `${apiUrl}/api/client/?page=${pageParam}&category=${category}`
+    `${apiUrl}/products/client/?page=${pageParam}&category=${category}`
   );
 
   if (!response.ok) {
@@ -27,7 +27,7 @@ export const getProducts: QueryFunction<
 // Get unique product
 export const getSingleProduct = async (productId: string) => {
   try {
-    const response = await fetch(`${apiUrl}/api/client/${productId}`);
+    const response = await fetch(`${apiUrl}/products/client/${productId}`);
     if (!response.ok) throw new Error("Request failed");
     const data = await response.json();
     return data.result || "";
@@ -44,7 +44,7 @@ export const getCategories = async (
     const apiURL = process.env.NEXT_PUBLIC_API_URL;
 
     const response = await fetch(
-      `${apiURL}/api/client/?requireCategories=${category}`
+      `${apiURL}/products/client/?requireCategories=${category}`
     );
     if (!response.ok) throw new Error("Failed to fetch categories");
     const data = await response.json();

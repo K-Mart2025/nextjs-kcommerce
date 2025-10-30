@@ -3,7 +3,9 @@ import { Calendar, Clock, MapPin, Truck } from "lucide-react";
 import Link from "next/link";
 
 export default async function Delivery() {
+  
   const config = await fetchConfig()
+  
   return (
     <div className="min-h-screen bg-white">
       <div className="max-w-4xl px-4 py-12 mx-auto">

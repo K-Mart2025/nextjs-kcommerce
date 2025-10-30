@@ -64,9 +64,11 @@ const LogoCarousel: React.FC = () => {
           (logo, index) => (
             <div
               key={index}
+              className="relative w-full h-[200px] flex justify-center items-center"
               style={{ position: 'relative', width: '100%', height: '200px' }}>
               <Image
-                fill
+                width={1000}
+                height={1000}
                 src={logo}
                 alt={`Logo ${index}`}
                 className="w-[100px] object-contain object-center h-min mr-5 shrink-0 border-none"

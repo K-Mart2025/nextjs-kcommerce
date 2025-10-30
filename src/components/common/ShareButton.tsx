@@ -30,12 +30,13 @@ const ShareButtonComponent = () => {
     try {
       // Verificar si la Web Share API está disponible
       if (navigator.share) {
+        await navigator.clipboard.writeText(currentUrl);
+
         await navigator.share({
           title: title,
           text: text,
           url: currentUrl,
         });
-        await navigator.clipboard.writeText(currentUrl);
 
       } else {
         // Alternativa para navegadores que no soportan la API

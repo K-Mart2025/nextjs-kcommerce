@@ -2,7 +2,7 @@ import { apiUrl } from "@/data/config";
 
 export const postVisit = async () => {
   try {
-    const response = await fetch(`${apiUrl}/api/client/?visit=`);
+    const response = await fetch(`${apiUrl}/visits`);
     if (!response.ok) {
       throw new Error(`Network response was not ok: ${response.statusText}`);
     }
