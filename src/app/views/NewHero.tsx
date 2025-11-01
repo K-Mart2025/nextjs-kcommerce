@@ -13,18 +13,14 @@ export const NewHero = () => {
     setIsClient(true);
   }, []);
 
-/*   if (!isClient) {
-    return <div className="w-full bg-blue-50 relative mb-20"><PrettyText>Loading...</PrettyText></div>
-  } */
-
   if (!isClient) {
     return null
   }
 
   return (
     <div className="w-full bg-blue-50 relative mb-20" >
-      <div className="bg-blue-50 relative h-[900px] md:h-[90vh] flex flex-col justify-around w-full mx-auto sm:max-w-7xl">
-        <div className="relative w-full p-4 h-full sm:h-fit md:scale-75 lg:scale-100 sm:max-w-7xl sm:rounded-3xl sm:bg-gray-950/10 sm:p-4 sm:ring-1 ring-neutral-700/30">
+      <div className="bg-blue-50 relative md:h-[90vh] w-full mx-auto sm:max-w-7xl">
+        <div className="relative w-full p-4 h-[70vh] sm:h-fit md:scale-75 lg:scale-100 sm:max-w-7xl sm:rounded-3xl sm:bg-gray-950/10 sm:p-4 sm:ring-1 ring-neutral-700/30">
           <div
             className="
     flex justify-center flex-col sm:w-1/2 pl-16 pr-8 z-20 absolute h-96 w-full sm:max-w-3xl 
@@ -57,7 +53,7 @@ export const NewHero = () => {
             </div>
           </div>
         </div>
-        <div className="relative w-full h-40 sm:h-56 lg:h-72">
+        <div className="relative w-full h-40 sm:h-56 lg:h-72 mb-4">
           <LogoCarousel />
         </div>
       </div>

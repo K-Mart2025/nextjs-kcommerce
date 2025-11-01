@@ -1,17 +1,23 @@
-import type { NextConfig } from 'next';
-
-const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'
-
-const nextConfig: NextConfig = {
-  output: "standalone",
+const nextConfig = {
   images: {
-    remotePatterns: [new URL(apiUrl), {
-      protocol: 'http',
-      hostname: 'localhost',
-      port: '3000',
-      pathname: '/**',
-    },],
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "3000",
+        pathname: "/uploads/**",
+      },
+      {
+        protocol: "https",
+        hostname: "images.pexels.com",
+      },
+      {
+        protocol: "https",
+        hostname: "kmarthabana.run.place",
+      },
+    ],
   },
-}
+  output: "standalone",
+};
 
-export default nextConfig
+export default nextConfig;
