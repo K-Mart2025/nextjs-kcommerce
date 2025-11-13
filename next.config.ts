@@ -36,6 +36,24 @@ const nextConfig = {
     remotePatterns,
   },
   output: "standalone",
+  productionBrowserSourceMaps: false,
+  webpack(config: { optimization: { minimizer: any[]; }; }, { isServer, dev }: any) {
+    if (!dev && !isServer) {
+      // find the TerserPlugin instance that Next already inserts
+      const terser = config.optimization.minimizer.find(
+        m => m.constructor.name === 'TerserPlugin'
+      );
+      if (terser) {
+        // minify vendor chunks too + drop console
+        terser.options.terserOptions.compress.drop_console = true;
+        terser.options.terserOptions.compress.drop_debugger = true;
+        terser.options.terserOptions.mangle = { safari10: true };
+        terser.options.terserOptions.format = { comments: false };
+        terser.options.include = undefined; // remove the default exclude
+      }
+    }
+    return config;
+  },
 };
 
 export default nextConfig;

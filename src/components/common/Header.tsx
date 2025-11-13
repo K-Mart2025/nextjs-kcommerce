@@ -113,7 +113,7 @@ const HeaderComponent = ({
             </h1>
           </Link>
         </div>
-        <div className="hidden md:block">
+        <div className="hidden md:block z-50">
           <NavBar />
         </div>
         <div className="relative flex justify-center content-center align-middle gap-4 md:hidden">
@@ -203,13 +203,12 @@ const HeaderComponent = ({
             {active && (
               <div
                 ref={menuRef}
-                className="mt-2 flex flex-col space-y-2 bg-white shadow-md rounded p-4"
+                className="mt-2 flex flex-col space-y-2 bg-white shadow-md rounded z-50 p-4"
                 style={{
                   position: "absolute",
                   top: "100%",
                   right: 0,
                   width: "200px",
-                  zIndex: 1000,
                 }}
               >
                 <Link href="/about" className="hover:text-blue-600">

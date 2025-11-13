@@ -48,7 +48,7 @@ const Feed = () => {
   return (
     <>
       {/* Navbar */}
-      <div id="products" className="sticky top-[70px] z-50 w-full bg-white shadow-lg rounded-lg flex justify-center">
+      <div id="products" className="sticky top-[70px] z-40 w-full bg-white shadow-lg rounded-lg flex justify-center">
         <div
           ref={navbarRef}
           className="flex w-full p-4 overflow-x-auto bg-white max-w-7xl whitespace-nowrap gap-x-4 scrollbar-hide"

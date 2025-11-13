@@ -1,4 +1,5 @@
 import { fetchConfig } from "@/services/config";
+import Image from "next/image";
 
 export const BlogPromo = async () => {
   const config = await fetchConfig()
@@ -16,7 +17,8 @@ export const BlogPromo = async () => {
         </div>
 
         {/* Imagen y botón */}
-        <div className="relative bg-white rounded-3xl p-8 shadow-2xl w-full h-96 md:w-3/5 lg:w-2/3">
+        <div className="relative bg-white rounded-3xl shadow-2xl w-full h-96 md:w-3/5 lg:w-2/3">
+        <Image height={500} width={500} src={"/assets/visitus.webp"} alt="BTS wallpaper" className="w-full h-full object-cover rounded-2xl" />
           <a
             href={config?.config.blogUrl ?? "#"}
             className="absolute bottom-5 right-5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 text-white font-bold py-4 px-10 rounded-xl transition-transform transform hover:scale-105"
