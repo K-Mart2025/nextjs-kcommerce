@@ -48,7 +48,7 @@ export const NewHero = () => {
             <div className="marquee-blur blur-sm sm:rounded-3xl ">
               <ThreeDMarquee
                 className="z-0 sm:rounded-3xl"
-                images={hero_images}
+                images={[...hero_images,...hero_images,...hero_images,...hero_images]}
               />
             </div>
           </div>

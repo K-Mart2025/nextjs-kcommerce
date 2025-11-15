@@ -1,7 +1,9 @@
-"use client"
+"use client";
 
 import { useEffect, useRef, useState } from "react";
 
+import { CardSkeleton } from "@/components/CardSkeleton";
+import { Skeleton } from "@/components/ui/skeleton";
 import { useCategories } from "@/hooks/useCategories";
 import { useCenterActiveButton } from "@/hooks/useCenterActiveButton";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
@@ -14,19 +16,21 @@ const Feed = () => {
   const sectionRefs = useRef<Record<string, HTMLDivElement>>({});
   const buttonRefs = useRef<Record<string, HTMLButtonElement>>({});
   const navbarRef = useRef<HTMLDivElement>(null); // Ref for the navbar container
-  const [isClient, setIsClient] = useState(false)
+  const [isClient, setIsClient] = useState(false);
 
   const { error, data, isError, isPending } = useCategories();
   // Scroll navbar to active button
   useCenterActiveButton({ activeSection, buttonRefs, navbarRef });
-  useIntersectionObserver({ data, sectionRefs, setActiveSection })
+  useIntersectionObserver({ data, sectionRefs, setActiveSection });
 
-  useEffect(()=>{
-    setIsClient(true)
-  }, [])
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
-  if (!isClient) { return null }
-  
+  if (!isClient) {
+    return null;
+  }
+
   if (isError) {
     return (
       <PrettyText>Error: {error?.message || "Error desconocido"}</PrettyText>
@@ -35,9 +39,26 @@ const Feed = () => {
 
   if (isPending) {
     return (
-      <section className="py-12 max-w-7xl">
-        <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8"> Cargando </div>
-      </section>
+      <div
+        id="products"
+        className="sticky top-[70px] z-40 w-full bg-white shadow-lg rounded-lg flex justify-center"
+      >
+        <div
+          className="flex w-full p-4 overflow-x-auto bg-white max-w-7xl whitespace-nowrap gap-x-4 scrollbar-hide"
+          style={{ scrollbarWidth: "none" }}
+        ></div>
+        <section className="w-full py-12 max-w-7xl grow">
+          <Skeleton className="px-4 mx-auto sm:px-6 lg:px-8" />
+        </section>
+        <section className="py-12 max-w-7xl">
+          <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+            <CardSkeleton />
+            <CardSkeleton />
+            <CardSkeleton />
+            <CardSkeleton />
+          </div>
+        </section>
+      </div>
     );
   }
 
@@ -48,7 +69,10 @@ const Feed = () => {
   return (
     <>
       {/* Navbar */}
-      <div id="products" className="sticky top-[70px] z-40 w-full bg-white shadow-lg rounded-lg flex justify-center">
+      <div
+        id="products"
+        className="sticky top-[70px] z-40 w-full bg-white shadow-lg rounded-lg flex justify-center"
+      >
         <div
           ref={navbarRef}
           className="flex w-full p-4 overflow-x-auto bg-white max-w-7xl whitespace-nowrap gap-x-4 scrollbar-hide"
@@ -56,12 +80,17 @@ const Feed = () => {
         >
           {data.map((item) => (
             <button
-              ref={(el) => {if (el) {buttonRefs.current[item] = el}}}
+              ref={(el) => {
+                if (el) {
+                  buttonRefs.current[item] = el;
+                }
+              }}
               key={item}
-              className={`text-lg font-semibold px-4 py-2 rounded-lg transition duration-200 ${activeSection === item
+              className={`text-lg font-semibold px-4 py-2 rounded-lg transition duration-200 ${
+                activeSection === item
                   ? "bg-gray-200"
                   : "text-gray-800 hover:bg-gray-100"
-                }`}
+              }`}
               onClick={() => handleScrollToSection(sectionRefs, item)}
             >
               {item}
@@ -70,7 +99,6 @@ const Feed = () => {
         </div>
       </div>
       <FeedContent data={data} refs={sectionRefs} />
-
     </>
   );
 };

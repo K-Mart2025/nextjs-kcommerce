@@ -1,7 +1,9 @@
 import { Layout } from "@/components/common/Layout";
+import { apiUrl } from "@/data/config";
 import "@/globals.css";
 import { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import { Providers } from "../contexts/Providers";
 
 const geistSans = Geist({
@@ -14,10 +16,18 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "K-Mart",
-  description: "Productos coreanos en Cuba!, Kimshi, Kimbap y demás",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  // fetch post information
+  const config = await fetch(`${apiUrl}/config/`).then((res) => res.json());
+
+  return {
+    title: config.kseoTitle,
+    description: config.kseoDescription,
+    keywords: config.kseoKeywords,
+  };
+}
+
+<Script src="https://t.contentsquare.net/uxa/99cd89445d8f6.js" />;
 
 export default function RootLayout({
   children,
@@ -30,9 +40,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Providers>
-          <Layout>
-            {children}
-          </Layout>
+          <Layout>{children}</Layout>
         </Providers>
       </body>
     </html>
