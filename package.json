@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "dev": "next dev",
+    "build": "next build",
     "start": "PORT=4000 node .next/standalone/server.js",
     "lint": "eslint"
   },
@@ -12,6 +12,7 @@
     "prettier-plugin-organize-imports"
   ],
   "dependencies": {
+    "@next/bundle-analyzer": "^16.0.2",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-navigation-menu": "^1.2.14",
@@ -21,14 +22,16 @@
     "@radix-ui/react-tabs": "^1.1.13",
     "@radix-ui/react-toggle": "^1.1.10",
     "@radix-ui/react-tooltip": "^1.2.8",
+    "@sentry/nextjs": "^10.25.0",
     "@tailwindcss/postcss": "^4.1.13",
     "@tanstack/react-query": "^5.90.2",
     "@tanstack/react-query-devtools": "^5.90.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.544.0",
+    "mixpanel-browser": "^2.72.0",
     "motion": "^12.23.22",
-    "next": "15.5.4",
+    "next": "16.0.3",
     "next-themes": "^0.4.6",
     "react": "19.1.1",
     "react-device-detect": "^2.2.3",

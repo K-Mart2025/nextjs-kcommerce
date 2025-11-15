@@ -1,5 +1,6 @@
-"use client"
+"use client";
 
+import { CardSkeleton } from "@/components/CardSkeleton";
 import PrettyText from "@/components/common/PrettyText";
 import { useDebounce } from "@/hooks/useDebounce";
 import { useProductsFiltered } from "@/hooks/useProductsFiltered";
@@ -15,7 +16,9 @@ interface FilteredProductsProps {
   filters?: ProductFilters;
 }
 
-const FilteredProducts: React.FC<FilteredProductsProps> = ({ filters: propFilters }) => {
+const FilteredProducts: React.FC<FilteredProductsProps> = ({
+  filters: propFilters,
+}) => {
   const searchParams = useSearchParams();
 
   // Convert searchParams entries to ProductFilters object
@@ -29,9 +32,10 @@ const FilteredProducts: React.FC<FilteredProductsProps> = ({ filters: propFilter
   }, [searchParams]);
 
   // Use filters from props if provided, otherwise from URL query
-  const filters = (propFilters && Object.keys(propFilters).length > 0)
-    ? propFilters
-    : (queryFilters ?? {});
+  const filters =
+    propFilters && Object.keys(propFilters).length > 0
+      ? propFilters
+      : queryFilters ?? {};
 
   const debouncedName = useDebounce(filters.name, 1250);
 
@@ -43,7 +47,10 @@ const FilteredProducts: React.FC<FilteredProductsProps> = ({ filters: propFilter
     isFetching,
     fetchNextPage,
     hasNextPage,
-  } = useProductsFiltered({ ...filters, name: debouncedName ? debouncedName : undefined });
+  } = useProductsFiltered({
+    ...filters,
+    name: debouncedName ? debouncedName : undefined,
+  });
 
   const observerRef = useRef<IntersectionObserver>(null);
   const loaderRef = useCallback(
@@ -76,7 +83,10 @@ const FilteredProducts: React.FC<FilteredProductsProps> = ({ filters: propFilter
     return (
       <section className="py-12 max-w-7xl grow">
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-          <PrettyText>Cargando...</PrettyText>
+          <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
         </div>
       </section>
     );
@@ -115,7 +125,14 @@ const FilteredProducts: React.FC<FilteredProductsProps> = ({ filters: propFilter
         {productList.map((product: Product) => (
           <Card singleProduct={product} key={product.id} />
         ))}
-        {isFetching && <PrettyText>Cargando más productos...</PrettyText>}
+        {isFetching && (
+          <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <CardSkeleton />
+            <CardSkeleton />
+            <CardSkeleton />
+            <CardSkeleton />
+          </div>
+        )}
       </ProductContainer>
       <div ref={loaderRef}></div>
     </SectionContainer>

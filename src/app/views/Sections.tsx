@@ -1,5 +1,6 @@
-"use client"
+"use client";
 
+import { CardSkeleton } from "@/components/CardSkeleton";
 import PrettyText from "@/components/common/PrettyText";
 import ProductCard from "@/components/common/ProductCard";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -12,11 +13,11 @@ import { SectionContainer } from "../../components/views/SectionContainer";
 const Sections = ({
   category,
   exclude,
-  excludeTitle=false
+  excludeTitle = false,
 }: {
   category: string;
   exclude?: string;
-  excludeTitle?: boolean
+  excludeTitle?: boolean;
 }) => {
   const {
     isPending,
@@ -26,7 +27,7 @@ const Sections = ({
     isFetching,
     fetchNextPage,
     hasNextPage,
-  } = useProductsSection(category)
+  } = useProductsSection(category);
 
   const observerRef = useRef<IntersectionObserver>(null);
   const loaderRef = useCallback(
@@ -81,7 +82,7 @@ const Sections = ({
   return (
     <>
       {productList.length > 0 ? (
-        <SectionContainer text={excludeTitle?"":category}>
+        <SectionContainer text={excludeTitle ? "" : category}>
           <ProductContainer>
             {isPending ? (
               <div>
@@ -95,7 +96,14 @@ const Sections = ({
                 <ProductCard singleProduct={product} key={product.id} />
               ))
             )}
-            {isFetching && <PrettyText>Cargando más productos...</PrettyText>}
+            {isFetching && (
+              <div>
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+              </div>
+            )}
           </ProductContainer>
           <div ref={loaderRef}></div>
         </SectionContainer>
